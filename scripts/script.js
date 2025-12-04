@@ -9,14 +9,9 @@ const winsEl = document.getElementById("wins");
 const lossesEl = document.getElementById("losses");
 const twoPlayerChk = document.getElementById("twoPlayer");
 const turnInfo = document.getElementById("turnInfo");
-// NEW: Sound toggle button (replaces checkbox)
 const soundToggle = document.getElementById("soundToggle");
-
-// NEW: Audio for card flip
 const flipSound = new Audio("audio/flip.mp3");
-
-// NEW: Sound enabled state (loaded from localStorage)
-let soundEnabled = localStorage.getItem("mc_soundEnabled") !== "false"; // Default to true
+let soundEnabled = localStorage.getItem("mc_soundEnabled") !== "false";
 
 let state = {
   pairs: 8,
@@ -109,7 +104,6 @@ function buildBoard(pairCount) {
   pairsCounterEl.textContent = String(pairCount);
   messageEl.textContent = "";
   turnInfo.textContent = state.twoPlayer ? `Player 1's turn` : "";
-  // CHANGE: Always enable the replay button after building the board
   replayBtn.disabled = false;
 }
 
@@ -139,7 +133,6 @@ function onCardClick(e) {
 function flip(card) {
   card.classList.add("flipped");
   card.setAttribute("aria-label", "Face-up card");
-  // NEW: Play flip sound only if enabled
   if (soundEnabled) {
     flipSound.play();
   }
@@ -224,11 +217,9 @@ function updateSessionResult(win) {
 }
 
 function replay() {
-  // Reset two-player state to ensure a clean restart
   state.currentPlayer = 1;
   state.scores = { 1: 0, 2: 0 };
   buildBoard(state.pairs);
-  // replayBtn.disabled = true;  // This is now redundant since buildBoard() enables it
 }
 
 startBtn.addEventListener("click", () => {
@@ -236,12 +227,9 @@ startBtn.addEventListener("click", () => {
   state.currentPlayer = 1;
   state.scores = { 1: 0, 2: 0 };
   buildBoard(Number(gridSelect.value));
-  // CHANGE: Removed 'replayBtn.disabled = true;' to keep replay always enabled
   messageEl.textContent = "";
   turnInfo.textContent = state.twoPlayer ? `Player 1's turn` : "";
 });
-
-// NEW: Event listener for sound toggle button
 soundToggle.addEventListener("click", () => {
   soundEnabled = !soundEnabled;
   soundToggle.innerHTML = soundEnabled ? "🔊" : "🔇";
@@ -257,8 +245,6 @@ board.addEventListener("keydown", (e) => {
     if (active && active.classList.contains("card")) active.click();
   }
 });
-
-// NEW: Initialize sound toggle icon on load
 soundToggle.innerHTML = soundEnabled ? "🔊" : "🔇";
 
 loadSessionCounts();
