@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Responsive Web Game</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <script src="./scripts/script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Memory Color Match</h1>
+      <p class="subtitle">Find all matching color pairs</p>
+    </header>
+    <main>
+      <br />
+      <br />
+
+      <section class="controls" aria-label="game controls">
+        <div class="left-controls">
+          <label for="gridSize">Grid:</label>
+          <select id="gridSize">
+            <option value="8">4 x 4 (8 pairs)</option>
+            <option value="12">4 x 6 (12 pairs)</option>
+            <option value="18">6 x 6 (18 pairs)</option>
+          </select>
+
+          <label for="twoPlayer">Two player</label>
+          <input type="checkbox" id="twoPlayer" />
+          <button id="startBtn">Start Game</button>
+          <button id="replayBtn" disabled>Replay</button>
+          <button id="soundToggle" type="button" aria-label="Toggle sound">
+            🔊
+          </button>
+        </div>
+
+        <div class="status">
+          <div>Moves: <span id="moveCounter">0</span></div>
+          <div>Pairs: <span id="pairsCounter">0</span></div>
+          <div id="turnInfo" class="turn-info" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="boardWrap">
+        <div id="board" class="board" role="grid" aria-live="polite"></div>
+      </section>
+
+      <section id="message" class="message" aria-live="assertive"></section>
+
+      <section class="session" aria-label="session stats">
+        <div>Wins: <span id="wins">0</span></div>
+        <div>Losses: <span id="losses">0</span></div>
+      </section>
+      <br />
+      <br />
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Suneetha</p>
+      <div class="social-media">
+        <ul>
+          <li>
+            <a href="https://www.facebook.com/">Facebook</a>
+            <a href="https://www.instagram.com/">Instagram</a>
+            <a href="https://x.com/">Twitter</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
