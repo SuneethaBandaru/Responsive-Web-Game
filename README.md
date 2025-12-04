@@ -35,5 +35,5 @@ No Frameworks: Pure vanilla JS for core functionality.
 
 ## Demo
 
-Live Demo: GitHub Pages Link
-Repository: GitHub Repo
+Live Demo: https://suneethabandaru.github.io/Responsive-Web-Game/
+Repository link: https://github.com/SuneethaBandaru/Responsive-Web-Game
